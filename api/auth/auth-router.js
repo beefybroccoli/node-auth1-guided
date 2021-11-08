@@ -7,6 +7,7 @@ router.post('/register', async (req, res, next) => {
     const { username, password } = req.body
     const newUser = { username, password }
     const result = await User.add(newUser)
+    res.status(201).json(result)
   } catch (err) {
     next(err)
   }
