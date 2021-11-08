@@ -5,7 +5,7 @@ const User = require('../users/users-model')
 router.post('/register', async (req, res, next) => {
   try {
     const { username, password } = req.body
-    const hash = bcrypt.hashSync(password, )
+    const hash = bcrypt.hashSync(password, 6) // 2 ^ 6
     const newUser = { username, password }
     const result = await User.add(newUser)
     res.status(201).json(result)
