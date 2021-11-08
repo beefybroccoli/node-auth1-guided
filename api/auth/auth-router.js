@@ -2,8 +2,8 @@ const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 
 router.post('/register', async (req, res, next) => {
+  throw new Error ('disaster')
   try {
-    
   } catch (err) {
     next(err)
   }
