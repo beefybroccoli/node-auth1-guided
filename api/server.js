@@ -27,7 +27,8 @@ server.use(session({ // connecting the session middleware
   saveUninitialized: false, // should server save a session by default?
   // DB STORAGE OF THE SESSIONS
   store: new Store({
-    knex: ''
+    knex: '../database/db-config.js',
+    
   })
 }))
 
