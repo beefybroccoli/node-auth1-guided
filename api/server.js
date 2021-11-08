@@ -14,6 +14,10 @@ const server = express();
 server.use(express.static(path.join(__dirname, '../client')));
 // server.use(helmet()); // disable just for teachin'
 server.use(express.json());
+server.use(session({ // connecting the session middleware
+  name: 'monkey',
+  secret: process.env.
+}))
 
 server.use('/api/users', usersRouter);
 server.use('/api/auth', authRouter); // here
