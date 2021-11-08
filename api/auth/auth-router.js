@@ -24,11 +24,11 @@ router.post('/login', async (req, res, next) => {
     const { username, password } = req.body
     const [user] = await User.findBy({ username })
     if (!user) { // TEST THIS
-      return next({ status: 403, message: 'you do not belong here!' })
+      return next({ status: 401, message: 'you do not belong here!' })
     }
     const doesPasswordCheck = bcrypt.compareSync(password, user.password)
     if (!doesPasswordCheck) { // TEST THIS
-      return next({ status: 403, message: 'something stinks about your credentials!' })
+      return next({ status: 401, message: 'something stinks about your credentials!' })
     }
     // add a key to req.session to trigger the session into being stored, cookie sent...
     req.session.user = user // creates & stores the session, sets SET-COOKIE with sid...
