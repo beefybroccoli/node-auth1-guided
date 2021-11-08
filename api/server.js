@@ -24,7 +24,7 @@ server.use(session({ // connecting the session middleware
     httpOnly: false, // should javascript be unable to read this cookie?
   },
   resave: false, // needed for some session storage solutions
-  saveUninitialized: false,
+  saveUninitialized: false, // should server save a session by default?
 }))
 
 server.use('/api/users', usersRouter);
