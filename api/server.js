@@ -21,9 +21,9 @@ server.use(session({ // connecting the session middleware
   cookie: {
     maxAge: 1000 * 60,
     secure: false, // ONLY over https
-    httpOnly: false, // ONLY 
+    httpOnly: false, // should javascript be unable to read this cookie?
   },
-  resave: false,
+  resave: false, // needed for some session storage solutions
   saveUninitialized: false,
 }))
 
