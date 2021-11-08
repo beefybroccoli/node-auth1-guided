@@ -1,10 +1,16 @@
 const router = require('express').Router()
 
 
-router.method('')
+router.post('/something', async (req, res, next) => {
+  res.json('something')
+})
 
-router.method('')
+router.post('/something', async (req, res, next) => {
+  res.json('something')
+})
 
-router.method('')
+router.method('/something', async (req, res, next) => {
+  res.json('something')
+})
 
 module.exports = router
