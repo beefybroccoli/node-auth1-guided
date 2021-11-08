@@ -18,6 +18,9 @@ server.use(session({ // connecting the session middleware
   name: 'monkey',
   secret: process.env.SESSION_SECRET || 'keep it secret',
   cookie: {
+    maxAge: 1000 * 60,
+    secure: false,
+    httpOnly: false,
     
   }
 }))
