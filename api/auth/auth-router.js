@@ -23,6 +23,9 @@ router.post('/login', async (req, res, next) => {
     // START SESSION (magic line)
     const { username, password } = req.body
     const [user] = await User.findBy({ username })
+    if (!user) {
+      return next({ status: 403, message: 'you do not belong here!' })
+    }
   } catch (err) {
     next(err)
   }
