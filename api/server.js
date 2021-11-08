@@ -15,14 +15,16 @@ server.use(express.static(path.join(__dirname, '../client')));
 // server.use(helmet()); // disable just for teachin'
 server.use(express.json());
 server.use(session({ // connecting the session middleware
+  // SESSION CONFIG
   name: 'monkey',
   secret: process.env.SESSION_SECRET || 'keep it secret',
   cookie: {
     maxAge: 1000 * 60,
     secure: false,
     httpOnly: false,
-    
-  }
+  },
+  resave: false,
+  saveUninitialized: false,
 }))
 
 server.use('/api/users', usersRouter);
