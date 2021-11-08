@@ -15,7 +15,14 @@ router.post('/register', async (req, res, next) => {
 })
 
 router.post('/login', async (req, res, next) => {
-  res.json('login wired!!')
+  try {
+    // pull u/p from req.body
+    // verify that username exists
+    // verify that password is legit
+    // START SESSION (magic line)
+  } catch (err) {
+    next(err)
+  }
 })
 
 router.get('/logout', async (req, res, next) => {
