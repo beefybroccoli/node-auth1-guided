@@ -31,7 +31,7 @@ server.use(session({ // connecting the session middleware
     tablename: 'sessions',
     sidfieldname: 'sid',
     createtable: true,
-    clearInterval: 
+    clearInterval: 1000 * 60 * 60,
   })
 }))
 
