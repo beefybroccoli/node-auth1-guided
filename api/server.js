@@ -27,7 +27,7 @@ server.use(session({ // connecting the session middleware
   saveUninitialized: false, // should server save a session by default?
   // DB STORAGE OF THE SESSIONS
   store: new Store({
-    knex: '../database/db-config.js',
+    knex: require('../database/db-config'), // we need "db"
     tablename: 'sessions',
     sidfieldname: 'sid',
     createtable: true,
