@@ -1,6 +1,5 @@
 const router = require('express').Router()
 
-
 router.post('/register', async (req, res, next) => {
   res.json('register endpoint wired!')
 })
