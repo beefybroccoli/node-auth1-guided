@@ -30,6 +30,7 @@ router.post('/login', async (req, res, next) => {
     if (!doesPasswordCheck) {
       return next({ status: 403, message: 'something stinks about your credentials' })
     }
+    req.session = user // creates & stores the session, sets SET-COOKIE with sid...
   } catch (err) {
     next(err)
   }
