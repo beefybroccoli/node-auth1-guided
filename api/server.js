@@ -28,7 +28,10 @@ server.use(session({ // connecting the session middleware
   // DB STORAGE OF THE SESSIONS
   store: new Store({
     knex: '../database/db-config.js',
-    
+    tablename: 'sessions',
+    sidfieldname: 'sid',
+    createtable: true,
+    clearInterval: 
   })
 }))
 
