@@ -23,7 +23,7 @@ router.post('/login', async (req, res, next) => {
     // START SESSION (magic line)
     const { username, password } = req.body
     const [user] = await User.findBy({ username })
-    if (!user) {
+    if (!user) { // TEST THIS
       return next({ status: 403, message: 'you do not belong here!' })
     }
     const doesPasswordCheck = bcrypt.compareSync(password, user.password)
@@ -31,6 +31,7 @@ router.post('/login', async (req, res, next) => {
       return next({ status: 403, message: 'something stinks about your credentials' })
     }
     req.session = user // creates & stores the session, sets SET-COOKIE with sid...
+    res.json({ message: `welcome, ${user.username}` })
   } catch (err) {
     next(err)
   }
