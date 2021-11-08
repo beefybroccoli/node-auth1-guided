@@ -26,7 +26,7 @@ router.post('/login', async (req, res, next) => {
     if (!user) {
       return next({ status: 403, message: 'you do not belong here!' })
     }
-    const doesPasswordCheck = bcrypt.sy
+    const doesPasswordCheck = bcrypt.compareSync(password, user.password)
   } catch (err) {
     next(err)
   }
