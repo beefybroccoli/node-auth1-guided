@@ -1,8 +1,10 @@
 const path = require('path');
 const express = require('express');
 // const helmet = require('helmet'); // just for teachin'
-const session = require('express-session')
-const Store = require('connect-session-knex')()
+
+// SESSION RELATED LIBS
+const session = require('express-session') // the session
+const Store = require('connect-session-knex')(session) // storing session in db
 
 const usersRouter = require('./users/users-router.js');
 const authRouter = require('./auth/auth-router.js'); // here
