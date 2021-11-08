@@ -22,6 +22,7 @@ router.post('/login', async (req, res, next) => {
     // verify that password is legit
     // START SESSION (magic line)
     const { username, password } = req.body
+    const collection = await User.findBy({ username })
   } catch (err) {
     next(err)
   }
