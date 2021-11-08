@@ -5,6 +5,7 @@ const User = require('../users/users-model')
 router.post('/register', async (req, res, next) => {
   try {
     const { username, password } = req.body
+    // NEVER STORE PLAIN TEXT PASSWORDS IN DB!
     const hash = bcrypt.hashSync(password, 6) // 2 ^ 6
     const newUser = { username, password: hash }
     const user = await User.add(newUser)
