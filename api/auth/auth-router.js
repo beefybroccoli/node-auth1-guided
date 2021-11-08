@@ -39,7 +39,9 @@ router.post('/login', async (req, res, next) => {
 })
 
 router.get('/logout', async (req, res, next) => {
-  res.json('logout wired!!!')
+  if (!req.session.user) {
+    
+  }
 })
 
 module.exports = router
