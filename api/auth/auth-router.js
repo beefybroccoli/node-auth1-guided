@@ -27,6 +27,9 @@ router.post('/login', async (req, res, next) => {
       return next({ status: 403, message: 'you do not belong here!' })
     }
     const doesPasswordCheck = bcrypt.compareSync(password, user.password)
+    if (!doesPasswordCheck) {
+      return next({ status: 403, message: 'something stinks about your credentials' })
+    }
   } catch (err) {
     next(err)
   }
