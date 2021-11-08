@@ -25,6 +25,8 @@ server.use(session({ // connecting the session middleware
   },
   resave: false, // needed for some session storage solutions
   saveUninitialized: false, // should server save a session by default?
+  // DB STORAGE OF THE SESSIONS
+  
 }))
 
 server.use('/api/users', usersRouter);
