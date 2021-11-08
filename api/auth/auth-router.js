@@ -42,7 +42,11 @@ router.get('/logout', async (req, res, next) => {
   if (!req.session.user) {
     return res.json({ message: 'excuse me? you were not logged in!' })
   }
-  req.session.destroy(() => {}) // async, old style Node
+  req.session.destroy((err) => {
+    if (err) {
+      
+    }
+  }) // async, old style Node
 })
 
 module.exports = router
