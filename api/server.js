@@ -16,7 +16,10 @@ server.use(express.static(path.join(__dirname, '../client')));
 server.use(express.json());
 server.use(session({ // connecting the session middleware
   name: 'monkey',
-  secret: process.env.
+  secret: process.env.SESSION_SECRET || 'keep it secret',
+  cookie: {
+    
+  }
 }))
 
 server.use('/api/users', usersRouter);
