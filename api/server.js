@@ -20,8 +20,8 @@ server.use(session({ // connecting the session middleware
   secret: process.env.SESSION_SECRET || 'keep it secret',
   cookie: {
     maxAge: 1000 * 60,
-    secure: false,
-    httpOnly: false,
+    secure: false, // ONLY over https
+    httpOnly: false, // ONLY 
   },
   resave: false,
   saveUninitialized: false,
