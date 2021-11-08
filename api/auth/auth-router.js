@@ -21,6 +21,7 @@ router.post('/login', async (req, res, next) => {
     // verify that username exists
     // verify that password is legit
     // START SESSION (magic line)
+    const { user}
   } catch (err) {
     next(err)
   }
