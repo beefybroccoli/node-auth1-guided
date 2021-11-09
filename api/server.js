@@ -2,6 +2,11 @@ const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 
+//session related library
+const session = require('express-session');
+//session related library
+const Store = require('connect-session-knex')(session)
+
 const usersRouter = require('./users/users-router.js');
 const authRouter = require('./auth/auth-router');
 
@@ -10,6 +15,19 @@ const server = express();
 server.use(express.static(path.join(__dirname, '../client')));
 server.use(helmet());
 server.use(express.json());
+//session related
+server.use(session({
+  //session config
+  name:'monkey',
+  secret: process.env.SESSION_SECRET || "secret key",
+  cookie:{
+    maxAge:1000*60*60, //last an hour
+    secure: false, //set to true in production
+    httpOnly:false, //set to true in production
+  },
+  resave: false,
+  saveUninitialized: false,
+}));
 
 server.use('/api/users', usersRouter);
 server.use('/api/auth', authRouter);
