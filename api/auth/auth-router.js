@@ -26,13 +26,13 @@ router.post('/login', async (req, res, next)=>{
         const collection = await userModel.findBy({username, })
         const [user] = collection;
         if(!user){
-            return next({status:403, message:'invalid username'});
+            return next({status:401, message:'invalid username'});
         }
         //verify that password is legit
         const verifyPassword = bcrypt.compareSync(password, user.password);
         if (!verifyPassword){
             
-            return next({status:403, message:"invalid password"});
+            return next({status:401, message:"invalid password"});
         }else{
             //START SESSION (magic line)
             //create a session for the user
@@ -47,7 +47,21 @@ router.post('/login', async (req, res, next)=>{
 })
 
 router.get('/logout', async (req, res, next)=>{
-    res.json("reached logout endpoint");
+    // res.json("reached logout endpoint");
+    if(!req.session.user){
+        res.json({message: "you were not logged in"})
+    }else{
+        //destory session
+        //old style Node, pass in a callback function
+        const username = req.session.user.username;
+        req.session.destroy((err)=>{
+            if (err){
+                return res.json({message:"something went wrong logging you out"});
+            }else{
+                return res.json({message: `goodbye, ${username}`});
+            }
+        });
+    }
 })
 
 
