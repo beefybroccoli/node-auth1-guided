@@ -39,11 +39,7 @@ router.post('/login', async (req, res, next)=>{
             //add a key to req.session to trigger the session into being stored, cookie sent...
             req.session.user = user;
             res.json({message:`welcome, ${user.username}`});
-        }
-
-        
-
-        
+        }     
 
     }catch(err){
         next(err);
