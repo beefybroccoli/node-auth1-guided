@@ -27,6 +27,16 @@ server.use(session({
   },
   resave: false,
   saveUninitialized: false,
+  //DB Storage of the sessions
+  store: new Store({
+    //provide a database connection knex
+    knex: require("../database/db-config"),
+    tablename: 'sessions',
+    sidfieldname:'sid',
+    createtable:true,
+    //flash the table every hour
+    clearInterval :1000 * 60 * 60,
+  })
 }));
 
 server.use('/api/users', usersRouter);
